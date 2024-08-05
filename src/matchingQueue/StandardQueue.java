@@ -13,10 +13,17 @@ public class StandardQueue extends MatchingQueue {
         this.capacity = capacity;
         this.applicants = 0;
         this.maxCapacityRate = 1.0f;
+
+        applyQueues = new LinkedList<>();
+        for(int i = 0; i < Student.MAX_APPLY + 1; i++) { // [n지망 지원 큐] + [n지망 모두 떨어진 학생 지원 큐]
+            applyQueues.add(new PriorityQueue<>()); //우선 순위 큐 사용
+        }
     }
 
     @Override
     public void resetQueues() {
+        this.applicants = 0;
+        this.maxCapacityRate = 1.0f;
         for(int i = 0; i < Student.MAX_APPLY + 1; i++) { // [n지망 지원 큐] + [n지망 모두 떨어진 학생 지원 큐]
             applyQueues.add(new PriorityQueue<>()); //우선 순위 큐 사용
         }
