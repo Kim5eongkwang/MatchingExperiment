@@ -34,7 +34,7 @@ public class StandardQueue extends MatchingQueue {
     }
 
     @Override
-    public boolean swapStudent(Student student) {
+    public Student swapStudent(Student student) {
         return false;
     }
 

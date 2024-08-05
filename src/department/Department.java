@@ -32,7 +32,7 @@ public abstract class Department {
         return applyQueues.applyQueues(student);
     }
 
-    public boolean swap(Student student){
+    public Student swap(Student student){
        return applyQueues.swapStudent(student);
     }
 

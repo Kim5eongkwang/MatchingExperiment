@@ -51,7 +51,7 @@ public abstract class MatchingQueue {
      * @param student 비교할 학생
      * @return
      */
-    abstract public boolean swapStudent(Student student);
+    abstract public Student swapStudent(Student student);
 
     /**
      * 최종 매칭된 결과 리스트 반환
