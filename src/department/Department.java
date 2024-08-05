@@ -1,12 +1,14 @@
 package department;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import matchingQueue.MatchingQueue;
 import matchingQueue.StandardQueue;
 import student.Student;
 
-public abstract class Department {
+public class Department {
 
     private String id;  //학과 아이디
 
@@ -32,8 +34,8 @@ public abstract class Department {
         return applyQueues.applyQueues(student);
     }
 
-    public Student swap(Student student){
-       return applyQueues.swapStudent(student);
+    public Student swap(Student student, int preferNumber){
+       return applyQueues.swapStudent(student, preferNumber);
     }
 
     /**
@@ -41,7 +43,15 @@ public abstract class Department {
      * @return 매칭된 학생 리스트
      */
     public List<Student> match(){
-        return applyQueues.match();
+        List<Student> matching = new LinkedList<>();
+        for(Queue<Student> applyQueue : applyQueues.getApplyQueues()) {
+            while(!applyQueue.isEmpty()) {
+                Student student = applyQueue.poll();
+                student.setMatchedDepartment(id);
+                matching.add(student);
+            }
+        }
+        return matching;
     }
 
     /**

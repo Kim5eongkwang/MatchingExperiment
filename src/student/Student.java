@@ -68,4 +68,35 @@ public class Student implements Comparable<Student>{
             return 0;
         return -1;
     }
+
+    public void setMatchedDepartment(String matchedDepartment) {
+        this.matchedDepartment = matchedDepartment;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
+    }
+
+    /**
+     * 선호 학과를 등록한다.
+     * 학생의 선호도가 높은 학과부터 등록해야한다.
+     * @param departmentId 선호 학과 ID
+     * @return 최대 지원 횟수를 넘겼거나, 이미 등록된 학과라면 false를 반환한다.
+     */
+    public boolean addPreferred(String departmentId) {
+        if(preferred.size() >= MAX_APPLY) {
+            return false;
+        }
+        for(String prefer : preferred) {
+            if(prefer.equals(departmentId)) {
+                return false;
+            }
+        }
+        preferred.add(departmentId);
+        return true;
+    }
+
+    public double getGrade() {
+        return grade;
+    }
 }

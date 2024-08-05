@@ -51,13 +51,11 @@ public abstract class MatchingQueue {
      * @param student 비교할 학생
      * @return
      */
-    abstract public Student swapStudent(Student student);
-
-    /**
-     * 최종 매칭된 결과 리스트 반환
-     * @return
-     */
-    abstract public List<Student> match();
+    abstract public Student swapStudent(Student student, int preferNumber);
 
     abstract public Student popStudent(int prefer);
+
+    public List<Queue<Student>> getApplyQueues() {
+        return applyQueues;
+    }
 }
